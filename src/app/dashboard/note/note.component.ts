@@ -36,13 +36,13 @@ export class NoteComponent implements OnInit {
   ) {
     this.noteForm = this.formBuilder.group({
       title: ['', Validators.required],
-      tagline:['',Validators.required],
+      tagline: ['', Validators.required],
       description: ['', Validators.required],
     });
 
     this.editForm = this.formBuilder.group({
       edited_title: ['', Validators.required],
-      edited_tagline:['',Validators.required],
+      edited_tagline: ['', Validators.required],
       edited_description: ['', Validators.required],
       isPinned: false
     });
@@ -67,7 +67,7 @@ export class NoteComponent implements OnInit {
     console.log(this.noteForm.value);
     this.noteObj.id = '';
     this.noteObj.note_title = value.title;
-    this.noteObj.note_tagline=value.tagline
+    this.noteObj.note_tagline = value.tagline
     this.noteObj.note_description = value.description;
 
     this.note.addNote(this.noteObj).then((note) => {
@@ -75,7 +75,7 @@ export class NoteComponent implements OnInit {
         this.toastr.success('Note Added successfully');
         this.noteForm.reset();
       }
-      else{
+      else {
         this.toastr.error("Error")
       }
     });
@@ -101,7 +101,7 @@ export class NoteComponent implements OnInit {
 
     this.noteObj.id = note.id;
     this.noteObj.note_title = value.edited_title;
-    this.noteObj.note_tagline=value.edited_tagline;
+    this.noteObj.note_tagline = value.edited_tagline;
     this.noteObj.note_description = value.edited_description;
 
     this.note.updateNote(note, this.noteObj).then(() => {
@@ -110,5 +110,5 @@ export class NoteComponent implements OnInit {
     this.editForm.reset();
   }
 
-  
+
 }
